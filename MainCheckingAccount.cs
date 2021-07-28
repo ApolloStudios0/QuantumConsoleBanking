@@ -14,7 +14,7 @@ namespace ConsoleBasedBanking
              * As a reminder, all of this information is falsified and is not real.
             */
             #region Variables & Declarations
-            var CheckingAccount = new Backend_Banking_Code();
+            var CheckingAccount = new MenuCode();
             bool Pass_Main_Menu = false;
             bool NewUser = true;
             #endregion
@@ -33,7 +33,11 @@ namespace ConsoleBasedBanking
                     // Username length checking ( Ensuring the user types in both names, or at least most of it )
                     if (Account_Length_String < 8)
                     {
-                        throw new NotImplementedException(); // Loops back with the Try-Catch
+                        throw new NotImplementedException(); // Loops back
+                    }
+                    if (Account_Length_String > 20)
+                    {
+                        throw new NotImplementedException(); // Loops back
                     }
 
                     Thread.Sleep(250);
@@ -43,7 +47,7 @@ namespace ConsoleBasedBanking
                 catch
                 {
                     Console.Clear();
-                    Console.WriteLine("Please enter your full name.");
+                    Console.WriteLine($"Please ensure your name was entered correctly.");
                     Thread.Sleep(3000);
                     Console.Clear();
                 }
@@ -177,22 +181,7 @@ namespace ConsoleBasedBanking
         }
     }
 }
-
-/* To Do List:
- * -- Important
- * Stop withdrawals taking negative number input ( Returns an error saying cannot take more than balance? )
- * Don't allow balance to go into negatives ( Done by withdrawing more than whats currently in balance )
- * Finish Loans Menu ( Interest Rate Calculation )
- * Add Setting Page
- * Check if overdraft and loans are different... which they basically arent ( Look Online Too )
- * Check username length ( Anything over 20? )
- * 
- * -- To Be Left Last
- * Speed Up Menu
- * Cleanse Notes ( Remove Useless Ones / Joke Ones )
- * Clean Codes ( Mostly Done )
- * Add admin console ( Remove Users? Add Balance? Remove Balance? Add Loan Amounts? Edit Balance?
- * 
+/*
  * -- Bank Questions ( Edited on tha fly )
  * How long did it take to develop Quantum Bank?
  * What is the purpose of Quantum Console Based Banking?
