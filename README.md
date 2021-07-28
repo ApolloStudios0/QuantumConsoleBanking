@@ -6,6 +6,8 @@ There is a BETA GUI version of Quantum Banking but it is still in early form and
 
 If you are more interested in the development side of things, please contact me on discord @ Nebula#0123
 
+![Screenshot](images/ExamplePhoto.png)
+
 ## Installation & Configuration
 
 Use [VS2019](https://visualstudio.microsoft.com/downloads/) to open and edit the source code of this project. [ No release version yet ]
