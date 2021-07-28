@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace ConsoleBasedBanking
 {
-    public class Backend_Banking_Code
+    public class MenuCode
     {
         #region Declarations & Configuration
         // bool AllowCustomSortCodes = false;
