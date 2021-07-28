@@ -21,7 +21,7 @@ Use [VS2019](https://visualstudio.microsoft.com/downloads/) to open and edit the
 5. Check if Overdraft/Loans are different ( Research )
 
 // Minor Issues
-1. Optimize threading/code
+1. Optimize threading/code ( Switches from Else Ifs)
 2. Cleanse notes ( Internal notes )
 3. Add Admin Console ( Add/Remove Bal, Loans ETC)
 4. Add FAQ
