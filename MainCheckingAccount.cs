@@ -17,6 +17,9 @@ namespace ConsoleBasedBanking
             var CheckingAccount = new MenuCode();
             bool Pass_Main_Menu = false;
             bool NewUser = true;
+            bool Are_Loans_Enabled = true;
+            bool Are_BankMessages_Enabled = true;
+            bool InSettingsPage = true;
             #endregion
 
             #region Check if the user is new or not
@@ -24,9 +27,11 @@ namespace ConsoleBasedBanking
             {
                 try
                 {
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("[ Welcome To The Quantum Banking Application! ]");
                     Console.WriteLine("[ ------------------------------------------- ]");
                     Console.Write("[ Please enter your full name: ");
+                    Console.ResetColor();
                     CheckingAccount.AccountOwner = Console.ReadLine();
                     double Account_Length_String = CheckingAccount.AccountOwner.Length;
 
@@ -62,9 +67,11 @@ namespace ConsoleBasedBanking
                 {
                     // Console Based Main Menu
                     Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine($"[ Current Balance : {CheckingAccount.Balance}]");
                     Console.WriteLine($"[ Account Owner : {CheckingAccount.AccountOwner}]");
                     Console.WriteLine("-------------------------------");
+                    Console.ResetColor();
                     Console.WriteLine("[*] Please select an option:");
                     Console.WriteLine();
                     Console.WriteLine("[1] Deposit Money");
@@ -74,65 +81,28 @@ namespace ConsoleBasedBanking
                     Console.WriteLine("[5] Exit Application");
                     Console.WriteLine();
                     Console.Write("Enter an option: ");
-
+                    #region Option Conversion
                     string form1 = Console.ReadLine();
                     double MenuChoice = Convert.ToDouble(form1); // Legacy way of doing it..
+                    #endregion
 
-                    if (MenuChoice == 1)
+                    switch (MenuChoice)
                     {
-                        Console.Clear();
-                        Console.WriteLine($"[ Current Balance : {CheckingAccount.Balance} ]");
-                        Console.WriteLine($"[ Account Owner : {CheckingAccount.AccountOwner} ]");
-
-                        Console.Write($"Please enter a deposit amount: ");
-
-                        string Users_Deposit_Amount = Console.ReadLine();
-                        double Int_Users_Deposit_Amount = Convert.ToDouble(Users_Deposit_Amount);
-
-                        Check_The_Transaction();
-
-                        CheckingAccount.DepositMoney(Int_Users_Deposit_Amount);
-                    } // Deposit
-
-                    else if (MenuChoice == 2)
-                    {
-                        Console.Clear();
-                        Console.WriteLine($"[ Current Balance : {CheckingAccount.Balance} ]");
-                        Console.WriteLine($"[ Account Owner : {CheckingAccount.AccountOwner} ]");
-
-                        Console.Write($"Please enter a withdrawal amount: ");
-
-                        string Users_Withdraw_Amount = Console.ReadLine();
-                        double Int_Users_Withdraw_Amount = Convert.ToDouble(Users_Withdraw_Amount);
-
-                        Check_The_Transaction();
-
-                        CheckingAccount.WithdrawMoney(Int_Users_Withdraw_Amount);
-
-                    } // Withdraw
-
-                    else if (MenuChoice == 3)
-                    {
-                        CheckingAccount.LoanMoney(1);
-                        Thread.Sleep(4000);
-                        Console.Clear();
-                    } // Loan
-
-                    else if (MenuChoice == 4)
-                    {
-                        Console.Clear();
-                        Console.WriteLine($"Sorry, {CheckingAccount.AccountOwner} this feature is in development.");
-                        Thread.Sleep(2500);
-                    } // Overdraft
-
-                    else if (MenuChoice == 5)
-                    {
-                        break;
-                    } // Exit
+                        case 1:
+                            DepositMoneyMenu();
+                            break;
+                        case 2:
+                            WithdrawMoneyMenu();
+                            break;
+                        case 3:
+                            LoansMenu();
+                            break;
+                        case 4:
+                            SettingsMenu();
+                            break;
+                    }
                 }
-
                 catch
-
                 {
                     Console.WriteLine($"Please enter a valid option.");
                     Thread.Sleep(3000);
@@ -177,6 +147,108 @@ namespace ConsoleBasedBanking
                 Thread.Sleep(1500);
                 Console.ResetColor();
                 Console.Clear();
+            }
+
+            void SettingsMenu()
+            {
+                while (InSettingsPage)
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine($"[ Current Balance : {CheckingAccount.Balance} ]");
+                    Console.WriteLine($"[ Account Owner : {CheckingAccount.AccountOwner} ]");
+                    Console.ResetColor();
+                    Console.WriteLine("-------------------------------");
+                    Console.WriteLine("");
+                    Console.WriteLine($"1. Enable/Disable loan screen. [Current: {Are_Loans_Enabled}]");
+                    Console.WriteLine($"2. Show Contact Messages [Current: {Are_BankMessages_Enabled}]");
+                    Console.WriteLine($"3. Exit Settings page.");
+                    Console.WriteLine("");
+                    Console.Write("Enter choice: ");
+                    string SettingsPageChoice = Console.ReadLine();
+                    double tt = Convert.ToInt32(SettingsPageChoice);
+
+                    switch (tt)
+                    {
+                        case 1:
+                            if (Are_Loans_Enabled)
+                            {
+                                Are_Loans_Enabled = false;
+                                Console.Clear();
+                                Console.WriteLine("Disabling Loans Section...");
+                                Thread.Sleep(2000);
+                            }
+                            else if (!Are_Loans_Enabled)
+                            {
+                                Are_Loans_Enabled = true;
+                                Console.Clear();
+                                Console.WriteLine("Enabling Loans Section...");
+                                Thread.Sleep(3000);
+                            }
+                            break;
+                        case 2:
+                            if (Are_BankMessages_Enabled)
+                            {
+                                Console.Clear();
+                                Are_BankMessages_Enabled = false;
+                                Console.WriteLine("Disabling Bank Contact Messages...");
+                                Thread.Sleep(1500);
+                            }
+                            else if (!Are_BankMessages_Enabled)
+                            {
+                                Console.Clear();
+                                Are_BankMessages_Enabled = true;
+                                Console.WriteLine("Enabling Bank Contact Messages...");
+                                Thread.Sleep(1500);
+                            }
+                            break;
+                        case 3:
+                            InSettingsPage = false;
+                            break;
+                        default:
+                            Console.WriteLine("Please enter a valid option.");
+                            break;
+                    }
+                }
+            }
+
+            void LoansMenu()
+            {
+                CheckingAccount.LoanMoney(1);
+                Thread.Sleep(4000);
+                Console.Clear();
+            }
+
+            void DepositMoneyMenu()
+            {
+                Console.Clear();
+                Console.WriteLine($"[ Current Balance : {CheckingAccount.Balance} ]");
+                Console.WriteLine($"[ Account Owner : {CheckingAccount.AccountOwner} ]");
+
+                Console.Write($"Please enter a deposit amount: ");
+
+                string Users_Deposit_Amount = Console.ReadLine();
+                double Int_Users_Deposit_Amount = Convert.ToDouble(Users_Deposit_Amount);
+
+                Check_The_Transaction();
+
+                CheckingAccount.DepositMoney(Int_Users_Deposit_Amount);
+            }
+
+            void WithdrawMoneyMenu()
+            {
+                Console.Clear();
+                Console.WriteLine($"[ Current Balance : {CheckingAccount.Balance} ]");
+                Console.WriteLine($"[ Account Owner : {CheckingAccount.AccountOwner} ]");
+
+                Console.Write($"Please enter a withdrawal amount: ");
+
+                string Users_Withdraw_Amount = Console.ReadLine();
+                double Int_Users_Withdraw_Amount = Convert.ToDouble(Users_Withdraw_Amount);
+
+                Check_The_Transaction();
+
+                CheckingAccount.WithdrawMoney(Int_Users_Withdraw_Amount);
             }
         }
     }

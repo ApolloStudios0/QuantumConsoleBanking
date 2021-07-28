@@ -154,9 +154,11 @@ namespace ConsoleBasedBanking
             if (HAS_EXISTING_LOAN == false && Account_Hard_Locked == false && Account_Soft_Locked == false)
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"[ Current Balance : {Balance}]");
                 Console.WriteLine($"[ Account Owner : {AccountOwner}]");
                 Console.WriteLine("-------------------------------");
+                Console.ResetColor();
                 Console.WriteLine("[*] Please select a loan amount:");
                 Console.WriteLine();
                 Console.WriteLine("[1] $100");
