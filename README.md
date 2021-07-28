@@ -19,7 +19,6 @@ Use [VS2019](https://visualstudio.microsoft.com/downloads/) to open and edit the
 3. Finish Loans Menu
 4. Add Settings Page
 5. Check if Overdraft/Loans are different ( Research )
-6. Further ID Checks
 
 // Minor Issues
 1. Optimize threading/code
