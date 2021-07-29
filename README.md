@@ -20,13 +20,13 @@ Use [VS2019](https://visualstudio.microsoft.com/downloads/) to open and edit the
 2. No negative balance
 3. Finish Loans Menu
 4. Add Settings Page
-5. Check if Overdraft/Loans are different ( Research )
+5. Overdraft/Loans Configuration
 
 // Minor Issues
-1. Optimize threading/code ( Switches from Else Ifs)
+1. Optimize Threading/Code
 2. Cleanse notes ( Internal notes )
 3. Add Admin Console ( Add/Remove Bal, Loans ETC)
-4. Add FAQ
+4. Add FAQ (Frequently Asked Questions)
 ```
 
 ## Contributing
