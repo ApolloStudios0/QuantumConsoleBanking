@@ -16,10 +16,9 @@ Use [VS2019](https://visualstudio.microsoft.com/downloads/) to open and edit the
 
 ```
 // Main Work
-1. Stop Withdrawals taking negative number input
+1. Stop Withdrawals taking negative number input (EG: -10)
 2. No negative balance
-3. Finish Loans Menu
-4. Add Settings Page
+3. Finish Loans Menu ( Interest Rate )
 5. Overdraft/Loans Configuration
 
 // Minor Issues
