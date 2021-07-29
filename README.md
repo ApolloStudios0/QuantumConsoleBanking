@@ -6,7 +6,7 @@ There is a BETA GUI version of Quantum Banking but it is still in early form and
 
 If you are more interested in the development side of things, please contact me on discord @ Nebula#0123
 
-![Screenshot](images/ExamplePhoto.png)
+![Screenshot](images/Example.png)
 
 ## Installation & Configuration
 
@@ -16,17 +16,18 @@ Use [VS2019](https://visualstudio.microsoft.com/downloads/) to open and edit the
 
 ```
 // Main Work
-1. Stop Withdrawals taking negative number input
+1. Stop Withdrawals taking negative number input (EG: -10)
 2. No negative balance
-3. Finish Loans Menu
-4. Add Settings Page
-5. Check if Overdraft/Loans are different ( Research )
+3. Finish Loans Menu ( Interest Rate )
+5. Overdraft/Loans Configuration
+6. Link database to main code
+7. Finish Main Menu Code
 
 // Minor Issues
-1. Optimize threading/code ( Switches from Else Ifs)
+1. Optimize Threading/Code
 2. Cleanse notes ( Internal notes )
 3. Add Admin Console ( Add/Remove Bal, Loans ETC)
-4. Add FAQ
+4. Add FAQ (Frequently Asked Questions)
 ```
 
 ## Contributing
