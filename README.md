@@ -20,6 +20,8 @@ Use [VS2019](https://visualstudio.microsoft.com/downloads/) to open and edit the
 2. No negative balance
 3. Finish Loans Menu ( Interest Rate )
 5. Overdraft/Loans Configuration
+6. Link database to main code
+7. Finish Main Menu Code
 
 // Minor Issues
 1. Optimize Threading/Code
