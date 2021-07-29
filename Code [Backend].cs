@@ -147,9 +147,9 @@ namespace ConsoleBasedBanking
 
         public void LoanMoney(double amount)
         {
-            double LOAN_INTEREST_AMOUNT = 9.40; // Default 9.4% APR ( Industry Standard )
             double TotalLoanAmount = 0;
-            double NEW_LOAN_AMOUNT_TO_PAY = (TotalLoanAmount * LOAN_INTEREST_AMOUNT);
+            double LOAN_INTEREST_AMOUNT = 9.40;
+
 
             if (HAS_EXISTING_LOAN == false && Account_Hard_Locked == false && Account_Soft_Locked == false)
             {
@@ -168,57 +168,49 @@ namespace ConsoleBasedBanking
                 Console.WriteLine("[5] Back");
                 Console.WriteLine();
                 Console.Write($"Please enter a choice: ");
-
+                #region Menu Conversion
                 string Loan_Menu_Choice = Console.ReadLine();
-                //double Int_Loan_Menu_Choice = Convert.ToDouble(Loan_Menu_Choice);
+                #endregion
 
-                if (Loan_Menu_Choice == "1")
-                {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"You took a loan of $100. With {LOAN_INTEREST_AMOUNT}% interest, you must payback {NEW_LOAN_AMOUNT_TO_PAY}");
-                    Console.WriteLine($"");
-                    _Balance += 100; // $100
-                    Console.ResetColor();
-                }
+                Console.ForegroundColor = ConsoleColor.Green; // Turn Console Green
 
-                else if (Loan_Menu_Choice == "2")
+                switch (Loan_Menu_Choice)
                 {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"You took a loan of $250. With {LOAN_INTEREST_AMOUNT}% interest, you must payback {NEW_LOAN_AMOUNT_TO_PAY}");
-                    Console.WriteLine($"");
-                    _Balance += 250; // $250
-                    Console.ResetColor();
-                }
+                    case "1":
+                        Console.Clear();
+                        //CalculateInterest();
+                        Console.WriteLine($"You took a loan of $100. With {LOAN_INTEREST_AMOUNT}% interest, you must payback ${Math.Floor(100 / LOAN_INTEREST_AMOUNT)} in interest.");
+                        _Balance += 100; // $100
+                        break;
 
-                else if (Loan_Menu_Choice == "3")
-                {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"You took a loan of $500. With {LOAN_INTEREST_AMOUNT}% interest, you must payback {NEW_LOAN_AMOUNT_TO_PAY}");
-                    Console.WriteLine($"");
-                    _Balance += 500; // $500
-                    Console.ResetColor();
-                }
+                    case "2":
+                        Console.Clear();
+                        Console.WriteLine($"You took a loan of $250. With {LOAN_INTEREST_AMOUNT}% interest, you must payback ${Math.Floor(250 / LOAN_INTEREST_AMOUNT)} in interest.");
+                        _Balance += 250; // $250
+                        break;
 
-                else if (Loan_Menu_Choice == "4")
-                {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"You took a loan of $1000. With {LOAN_INTEREST_AMOUNT}% interest, you must payback {NEW_LOAN_AMOUNT_TO_PAY}");
-                    Console.WriteLine($"");
-                    _Balance += 1000; // $1000
-                    Console.ResetColor();
-                }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine($"Thank you for browsing our loans, {AccountOwner}");
-                    Thread.Sleep(2000);
-                    Console.WriteLine("You can find our offers anytime under the 'Loans' section of the app");
-                    Thread.Sleep(2000);
-                    Console.WriteLine("Returning you to the main screen...");
+                    case "3":
+                        Console.Clear();
+                        Console.WriteLine($"You took a loan of $500. With {LOAN_INTEREST_AMOUNT}% interest, you must payback ${Math.Floor(500 / LOAN_INTEREST_AMOUNT)} in interest.");
+                        _Balance += 500; // $500
+                        break;
+
+                    case "4":
+                        Console.Clear();
+                        Console.WriteLine($"You took a loan of $1000. With {LOAN_INTEREST_AMOUNT}% interest, you must payback ${Math.Floor(1000 / LOAN_INTEREST_AMOUNT)} in interest.");
+                        _Balance += 1000; // $1000
+                        break;
+
+                    default:
+                        Console.Clear();
+                        Console.WriteLine($"Thank you for browsing our loans, {AccountOwner}");
+                        Thread.Sleep(2000);
+                        Console.WriteLine("You can find our offers anytime under the 'Loans' section of the app");
+                        Thread.Sleep(2000);
+                        Console.WriteLine("Returning you to the main screen...");
+                        break;
+
+                Console.ResetColor(); // Clear Green Console
                 }
             }
         } // Loan money (Anything under $10,000 with configurable interest)
